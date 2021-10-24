@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Product</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+<header>
+  <button class="btn logout">
+    <a th:href="@{/logout}">Logout</a>
+  </button>
+  <h1>Products</h1>
+  <h3>Add products</h3>
+</header>
+<form th:action="@{/addProduct}" th:object="${product}" method="POST" enctype="multipart/form-data">
+  <div id="add-product">
+    <h1 style="color: red" th:text="${noti}"></h1>
+    <h2>Add new product</h2>
+    <hr />
+    <div class="field">
+      <span class="field-name">Product Name</span>
+      <input type="text" th:field="*{productName}" class="i-field" />
+      <span style="color: red" th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"> </span>
+    </div>
+    <div class="field">
+      <span class="field-name">Unit Price</span>
+      <input type="text" th:field="*{unitPrice}" class="i-field" />
+      <span style="color: red" th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}"> </span>
+    </div>
+    <div class="field">
+      <span class="field-name">Units In Stock</span>
+      <input type="number" th:field="*{unitInStock}" value="0" class="i-field" />
+      <span style="color: red" th:if="${#fields.hasErrors('unitInStock')}" th:errors="*{unitInStock}"> </span>
+    </div>
+    <div class="field">
+      <span class="field-name">Description</span>
+      <label>
+        <textarea th:field="*{description}"  class="i-field"></textarea>
+      </label>
+    </div>
+    <div class="field">
+      <span class="field-name">Manufacturer</span>
+      <input type="text" th:field="*{manufacturer}" class="i-field" />
+      <span style="color: red" th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"> </span>
+    </div>
+    <div class="field">
+      <span class="field-name">Category</span>
+      <input type="text" th:field="*{category}" class="i-field" />
+      <span style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"> </span>
+    </div>
+    <div class="field">
+      <span class="field-name">Condition</span>
+      <span class="g-radio">
+            <input type="radio" th:field="*{productCondition}" value="1" id="new" checked/>
+            <label for="new">New</label>
+            <input type="radio" th:field="*{productCondition}" value="2" id="old" />
+            <label for="old">Old</label>
+            <input type="radio" th:field="*{productCondition}" value="3" id="refurbished" />
+            <label for="refurbished">Refurbished</label>
+          </span>
+    </div>
+    <div class="field">
+      <span class="field-name">Product Image File</span>
+      <input type="file" th:field="*{img}" id="pImage" class="i-field" />
+      <span style="color: red" th:if="${#fields.hasErrors('img')}" th:errors="*{img}"> </span>
+    </div>
+    <div class="field">
+      <input type="submit" value="Add Product" class="btn btn-add" />
+    </div>
+  </div>
+</form>
+</body>
+</html>

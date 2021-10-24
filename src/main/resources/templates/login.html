@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<header>
+  <h1>Mobile Store</h1>
+</header>
+<div id="login">
+  <div class="title">
+    Please sign in
+  </div>
+  <form th:action="@{/login}" method="POST">
+
+    <input type="text" name="username" class="l-input" placeholder="User Name">
+    <input type="password" name="password" class="l-input" placeholder="Password">
+    <input type="submit" value="Login" name="action" class="btn btn-success">
+    <a th:href="@{/productList}" class="btn btn-clear">Go To Shopping</a>
+  </form>
+</div>
+</body>
+</html>
